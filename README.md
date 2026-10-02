@@ -47,7 +47,7 @@ project-name/
 └── pyproject.toml # where the project config lives, similar to requirements.txt: includes all project meta data and dependencies
 ```
 
-![alt text](image.png)
+![alt text](assets/image.png)
 - running the main.py file also creates the venv in my-app
 
 Adding Dependencies:
@@ -57,10 +57,10 @@ uv add pandas
 - adds the pandas dependency to the project configuration (pyproject.toml) and installs it to the venv
 - uv creates and manages the venv behind the scenes while in the project dir
 
-![alt text](image-1.png)
+![alt text](assets/image-1.png)
 - uv.lock contains the exact versions of everything that is being used in the project
 - pyproject.toml now has fastapi added to the dependencies
-![alt text](image-2.png)
+![alt text](assets/image-2.png)
 
 Running The Python Files:
 ```python
@@ -94,22 +94,22 @@ Checking Installed Packages:
 ```
 uv tree
 ```
-![alt text](image-3.png)
+![alt text](assets/image-3.png)
 - shows the dependency tree of the entire project with the versions that each one has been installed with
 
 Development Dependencies:
 - packages that are separated from the normal dependencies
 - packages that are required to write, test, format, and build the project, but are not required when the application is ran in production
     - developer tooling like: pytest, ruff
-- when a library is published or an application is deployed, the dev dependencies are excluded so the production image is lean, and fast to build
+- when a library is published or an application is deployed, the dev dependencies are excluded so the production assets/image is lean, and fast to build
 
 ```
 uv add --dev pytest
 ```
 - pytest is added for development purposes and not for the production build
-![alt text](image-4.png)
+![alt text](assets/image-4.png)
 - under pyproject.toml, it can be seen that pytest has been added under a new dev dependency group
-![alt text](image-5.png)
+![alt text](assets/image-5.png)
 
 uv Sync
 ```
@@ -122,9 +122,9 @@ uv sync
 
 Removing a package from the `pyproject.toml` file:
 Ex: removing scikit-learn
-![alt text](image-6.png)
+![alt text](assets/image-6.png)
 - then running `uv sync` removes scikit-learn and all the dependencies that it relies on
-![alt text](image-7.png)
+![alt text](assets/image-7.png)
 - scikit learn is uninstalled since uv realizes that the env is different from the `pyproject.toml`
 - uv only removes packages that have been orphaned meaning that there are 0 packages left relying on them
     - meaning that if multiple packages rely on one dependency
@@ -139,8 +139,8 @@ uv remove package_name
     - dependencies
     - lock file
     - environment
-![alt text](image-8.png)
-![alt text](image-9.png)
+![alt text](assets/image-8.png)
+![alt text](assets/image-9.png)
 - uvicorn is no longer included in `pyproject.toml` dependencies
 
 ---
@@ -162,11 +162,11 @@ uvx black main.py
     - this process is cached, meaning that any subsequent uses, are faster
 
 Example:
-![alt text](image-10.png)
-![alt text](image-11.png)
-![alt text](image-12.png)
+![alt text](assets/image-10.png)
+![alt text](assets/image-11.png)
+![alt text](assets/image-12.png)
 - ruff successfully formatted the project without adding anything to the dependencies 
-![alt text](image-13.png)
+![alt text](assets/image-13.png)
 - meaning the tool was used without adding the dependency to `pyproject.toml`
 
 
