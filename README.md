@@ -201,7 +201,7 @@ uv tool uninstall <tool-name>
 ```
 
 #### Conclusion
-While `uv` is significantly faster than other Python package and project managers, it was not the sole reason for me to learn about it.
+While `uv` is significantly faster than other Python package and project managers, it was not the sole reason for me to learn and start using it in my Python workflows.
 - while I have had my problems and nightmares with extremely slow anaconda env's 
     - when adding and removing venv
     - adding dependencies
@@ -209,4 +209,6 @@ While `uv` is significantly faster than other Python package and project manager
     - version compatibility issues between conflicting dependencies that sometimes took hours to fix
     - (issues that were solved by switching to linux via WSL-Ubuntu and using pip & venv) 
 - Some of the major reasons was the ease of use, reliability, QOL, universal true reproducibility(uv.lock), built in python version manager, seamless workflow (uv run/sync) all in a single application
-- not having to juggle multiple tools when developing in python
+    - not having to juggle multiple tools when developing in python
+- For CI/CD pipelines or similar applications, where the python build step has the potential to be a bottleneck
+    - then the speed of package of environment setup of `uv` can be very useful
